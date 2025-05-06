@@ -151,7 +151,7 @@ export default function ContactSession() {
                                 Telefone <br />
                                 <Box
                                     component="a"
-                                    href="tel:+5532999125226"
+                                    href="tel:+5511915788441"
                                     sx={{
                                         color: "inherit",
                                         textDecoration: "none",

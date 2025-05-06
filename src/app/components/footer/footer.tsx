@@ -165,7 +165,7 @@ export default function Footer() {
                         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
                             <PhoneIcon sx={{ color: "#7F56D9" }} />
                             <Link
-                                href="tel:+5532999125226"
+                                href="tel:+5511915788441"
                                 underline="hover"
                                 sx={{
                                     fontSize: "14px",
