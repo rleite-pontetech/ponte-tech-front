@@ -174,7 +174,7 @@ export default function Footer() {
                                     color: "#4F4F4F",
                                 }}
                             >
-                                (32) 99912-5226
+                                (11) 91578-8441
                             </Link>
                         </Box>
                         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
