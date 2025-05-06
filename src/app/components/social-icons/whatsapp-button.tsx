@@ -6,7 +6,7 @@ const MotionLink = motion.a;
 export default function WhatsAppButton() {
     return (
         <MotionLink
-            href="https://wa.me/5532999125226"
+            href="https://wa.me/5511915788441"
             target="_blank"
             rel="noopener noreferrer"
             initial={{ y: 0 }}
