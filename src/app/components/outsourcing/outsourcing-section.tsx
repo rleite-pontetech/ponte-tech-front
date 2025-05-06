@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import SmallInfoCard from "../cards/small-info";
 import ContainedPurpleButton from "../buttons/contened-purple";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 export default function OutsourcingSection() {
   return (
@@ -10,11 +11,9 @@ export default function OutsourcingSection() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        minHeight: { xs: "auto", md: "100vh" },
-        px: { xs: "16px", md: "120px" },
-        pb: { xs: "40px", md: "80px" },
-        gap: { xs: "40px", md: "20px" },
-        mb: { xs: "40px", md: "0" }, // Adiciona margem inferior no mobile
+        maxWidth: "90vw",
+        mx: "auto",
+        gap: { xs: "40px", md: "60px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -33,23 +32,25 @@ export default function OutsourcingSection() {
             fontFamily: "Sora, sans-serif",
             color: "#000000",
             mb: "8px",
+            mt: { xs: "40px", md: "80px" },
           }}
         >
           Outsourcing
         </Typography>
-        <Typography
-          sx={{
-            fontSize: { xs: "16px", md: "18px" },
-            fontWeight: 400,
-            lineHeight: { xs: "18px", md: "32px" },
-            fontFamily: "Sora, sans-serif",
-            color: "#4F4F4F",
-            width: "100%",
-          }}
-        >
-          Integramos o conhecimento e a eficiência dos profissionais
-          <br /> para transformar desafios em oportunidades estratégicas
-        </Typography>
+          <Box sx={{display: "flex", justifyContent: "center"}}>
+              <Typography
+                  sx={{
+                      fontSize: { xs: "16px", md: "18px" },
+                      fontWeight: 400,
+                      lineHeight: { xs: "28px", md: "32px" },
+                      fontFamily: "Sora, sans-serif",
+                      color: "#4F4F4F",
+                      maxWidth: "500px",
+                  }}
+              >
+                  Conectamos talento e eficiência para transformar desafios em soluções estratégicas que impulsionam resultados.
+              </Typography>
+          </Box>
       </Box>
 
       {/* Cards e Imagem */}
@@ -58,17 +59,14 @@ export default function OutsourcingSection() {
           width: "100%",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "space-between",
           gap: { xs: "24px", md: "40px" },
-          mt: 2,
         }}
       >
         <Box sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "left",
-          alignItems: "left",
         }}>
           <Typography
             sx={{
@@ -82,10 +80,7 @@ export default function OutsourcingSection() {
               textAlign: "left",
             }}
           >
-            Provemos especialistas para o ecossistema de desenvolvimento de
-            software. Através do modelo body shop, alocamos profissionais em
-            projetos robustos, que demandam soluções ágeis e eficazes para
-            nossos clientes.
+              Disponibilizamos especialistas para fortalecer o ecossistema de desenvolvimento de software. Por meio do modelo body shop, alocamos profissionais em projetos desafiadores que exigem agilidade, eficácia e alto desempenho para atender às necessidades dos nossos clientes.
           </Typography>
           <Box
             sx={{
@@ -97,42 +92,50 @@ export default function OutsourcingSection() {
             }}
           >
             <SmallInfoCard
-              image="flexibilizy.svg"
+              image="svg/flexibilizy.svg"
               title="Flexibilização"
               description="Prioridades adaptáveis e resposta ágil a mudanças constantes."
             />
             <SmallInfoCard
-              image="visibility.svg"
+              image="svg/visibility.svg"
               title="Visibilidade"
               description="Interação constante com visibilidade clara das entregas."
             />
             <SmallInfoCard
-              image="knowledge.svg"
+              image="svg/knowledge.svg"
               title="Conhecimento"
               description="Profissionais prontos para resolver desafios reais com eficiência."
               imageBg="rgba(227, 99, 235, 0.1)"
             />
             <SmallInfoCard
-              image="strategy.svg"
+              image="svg/strategy.svg"
               title="Estratégia"
               description="Adaptabilidade com foco nas necessidades estratégicas do cliente."
               imageBg="rgba(227, 99, 235, 0.1)"
             />
           </Box>
+          {/* Botão */}
+          <Box
+            sx={{
+                display: "flex",
+                width: "100%",
+                mt: 3,
+            }}
+          >
+              <ContainedPurpleButton height={42}>Fale conosco <ArrowRightAltIcon sx={{bgcolor: "transparent"}}/></ContainedPurpleButton>
+          </Box>
         </Box>
 
         <Box
           sx={{
-            maxWidth: { xs: "100%", md: "50%" },
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            mt: 2,
             order: { xs: 2, md: 1 },
           }}
         >
           <img
-            src="./outsourcing-robot.svg"
+            src="/svg/outsourcing-robot.svg"
             alt="Outsourcing Robot"
             style={{
               width: "100%",
@@ -140,17 +143,6 @@ export default function OutsourcingSection() {
             }}
           />
         </Box>
-      </Box>
-
-      {/* Botão */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: { xs: "center", md: "flex-start" },
-          width: "100%",
-        }}
-      >
-        <ContainedPurpleButton>Fale conosco →</ContainedPurpleButton>
       </Box>
     </Box>
   );

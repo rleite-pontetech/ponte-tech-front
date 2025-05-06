@@ -26,10 +26,9 @@ export default function ClientOpinionSection() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        minHeight: { xs: "auto", md: "80vh" },
-        px: { xs: "16px", md: "120px" },
-        py: { xs: "40px", md: "80px" },
-        gap: { xs: "40px", md: "40px" },
+        maxWidth: "90vw",
+        mx: "auto",
+        gap: { xs: "40px", md: "60px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -48,6 +47,7 @@ export default function ClientOpinionSection() {
             fontFamily: "Sora, sans-serif",
             color: "#000000",
             mb: "8px",
+            mt: { xs: "40px", md: "80px" },
           }}
         >
           O que nossos clientes dizem

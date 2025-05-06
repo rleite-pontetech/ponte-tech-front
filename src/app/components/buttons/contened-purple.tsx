@@ -10,9 +10,9 @@ interface ContainedPurpleButtonProps extends BoxProps {
 
 export default function ContainedPurpleButton({
   children,
-  width = '195px',
+  width = 'min-content',
   ...rest
-}: ContainedPurpleButtonProps) {
+}: Readonly<ContainedPurpleButtonProps>) {
   return (
     <Box
       sx={{
@@ -22,22 +22,21 @@ export default function ContainedPurpleButton({
         alignItems: 'center',
         flexWrap: 'nowrap', 
         whiteSpace: "nowrap",
-        padding: '16px 24px',
+        padding: '12px 24px',
         gap: '8px',
-        width: width,
-        height: '48px',
+        width: width || 'min-content',
         background: '#8270FF',
         borderRadius: '4px',
         color: '#FFFFFF',
         fontFamily: 'Sora, sans-serif',
-        fontSize: '15.8px',
+        fontSize: '14px',
         fontWeight: 300,
         textTransform: 'none',
         '&:hover': {
-          background: '#FFFFFF',
-          border: '1px solid #6F60E0',
-          color: '#6F60E0',
+          background: '#6F60E0',
+          borderColor: '#6F60E0',
           cursor: 'pointer',
+          boxShadow: '0 2px 8px rgba(130, 112, 255, 0.3)',
         },
       }}
       {...rest}

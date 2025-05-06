@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import ContainedPurpleButton from "../buttons/contened-purple";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 export default function AboutSection() {
   return (
@@ -8,19 +9,16 @@ export default function AboutSection() {
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        minHeight: { xs: "auto", md: "100vh" },
-        px: { xs: "16px", md: "0" },
-        pb: { xs: "40px", md: "80px" },
-        gap: { xs: "40px", md: "80px" },
-        mb: { xs: "40px", md: "0" },
+        maxWidth: "90vw",
+        mx: "auto",
+        gap: { xs: "40px", md: "60px" },
       }}
     >
       <Box
         sx={{
           textAlign: "center",
           width: "100%",
-          pt: { xs: "40px", md: "100px" },
+          pt: { xs: "40px", md: "80px" },
         }}
       >
         <Typography
@@ -43,7 +41,6 @@ export default function AboutSection() {
             lineHeight: { xs: "24px", md: "32px" },
             fontFamily: "Sora, sans-serif",
             color: "#4F4F4F",
-            mb: {md: "0px", xs: "24px"},
           }}
         >
           Tecnologia na essência, evolução com propósito
@@ -54,10 +51,8 @@ export default function AboutSection() {
           width: "100%",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          alignItems: "center",
+          alignItems: "start",
           justifyContent: "space-between",
-          px: { xs: "16px", md: "120px" },
-          pb: { xs: "24px", md: "80px" },
           gap: { xs: "24px", md: 8 },
         }}
       >
@@ -65,13 +60,11 @@ export default function AboutSection() {
           sx={{
             maxWidth: { xs: "100%", md: "50%" },
             display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
             order: { xs: 2, md: 1 },
           }}
         >
           <img
-            src="./about-us.svg"
+            src="/img/about-us.png"
             alt="Sobre nós"
             style={{
               width: "100%",
@@ -84,7 +77,7 @@ export default function AboutSection() {
         <Box
           sx={{
             maxWidth: { xs: "100%", md: "50%" },
-            textAlign: { xs: "center", md: "left" },
+
             order: { xs: 1, md: 2 },
           }}
         >
@@ -139,10 +132,9 @@ export default function AboutSection() {
             sx={{
               mx: { xs: "auto", md: "0" },
               display: { xs: "flex", md: "block" },
-              justifyContent: { xs: "center", md: "inherit" },
             }}
           >
-            <ContainedPurpleButton>Fale conosco →</ContainedPurpleButton>
+            <ContainedPurpleButton height={42}>Fale conosco <ArrowRightAltIcon sx={{bgcolor: "transparent"}}/></ContainedPurpleButton>
           </Box>
         </Box>
       </Box>

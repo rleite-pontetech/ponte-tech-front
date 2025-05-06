@@ -16,7 +16,7 @@ export default function SmallInfoCard({
   imageBg = "rgba(130, 112, 255, 0.1)",
   imagePadding = 9,
   invertImageOrder = false,
-}: SmallInfoCardProps) {
+}: Readonly<SmallInfoCardProps>) {
   return (
     <Box
       sx={{

@@ -9,11 +9,9 @@ export default function MethodologySection() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        minHeight: { xs: "auto", md: "60vh" },
-        px: { xs: "16px", md: "120px" },
-        pb: { xs: "40px", md: "80px" },
-        gap: { xs: "40px", md: "80px" },
-        mb: { xs: "40px", md: "0" }, 
+        maxWidth: "90vw",
+        mx: "auto",
+        gap: { xs: "40px", md: "60px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -32,22 +30,25 @@ export default function MethodologySection() {
             fontFamily: "Sora, sans-serif",
             color: "#000000",
             mb: "8px",
+            mt: { xs: "40px", md: "80px" },
           }}
         >
           Metodologia H2T
         </Typography>
-        <Typography
-          sx={{
-            fontSize: { xs: "16px", md: "18px" },
-            fontWeight: 400,
-            lineHeight: { xs: "24px", md: "32px" },
-            fontFamily: "Sora, sans-serif",
-            color: "#4F4F4F",
-            mb: {xs: "0px", md: "24px"},
-          }}
-        >
-          Potencialize o crescimento do seu negócio com a nossa experiência
-        </Typography>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Typography
+                  sx={{
+                      fontSize: { xs: "16px", md: "18px" },
+                      fontWeight: 400,
+                      fontFamily: "Sora, sans-serif",
+                      color: "#4F4F4F",
+                      maxWidth: "500px",
+                  }}
+              >
+                  Potencialize o crescimento do seu negócio com a nossa experiência
+              </Typography>
+          </Box>
+
       </Box>
 
       {/* Cards */}
@@ -61,25 +62,25 @@ export default function MethodologySection() {
       >
         <SmallInfoCard
           invertImageOrder
-          image="./smart-proccess.svg"
+          image="./svg/smart-proccess.svg"
           title="Processo inteligente de recrutamento e seleção"
           description="Atraímos e selecionamos candidatos altamente capacitados com qualidade e precisão."
         />
         <SmallInfoCard
           invertImageOrder
-          image="./trophy.svg"
+          image="./svg/trophy.svg"
           title="Experiência consolidada"
           description="Validamos técnica e comportamento com histórico de entregas bem-sucedidas."
         />
         <SmallInfoCard
           invertImageOrder
-          image="./tech-fit.svg"
+          image="./svg/tech-fit.svg"
           title="FIT técnico e cultural com o cliente"
           description="Integração produtiva com valores e expectativas alinhadas."
         />
         <SmallInfoCard
           invertImageOrder
-          image="./sync.svg"
+          image="./svg/sync.svg"
           title="Envolvimento do início ao fim do projeto"
           description="Desde concepção até manutenção — cobertura completa do ciclo de vida do software."
         />

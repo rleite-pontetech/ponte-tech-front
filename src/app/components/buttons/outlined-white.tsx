@@ -12,7 +12,7 @@ export default function OutlinedWhiteButton({
   children,
   isTransparent = false,
   ...rest
-}: OutlinedWhiteButtonProps) {
+}: Readonly<OutlinedWhiteButtonProps>) {
   return (
     <Box
       sx={{
@@ -23,22 +23,23 @@ export default function OutlinedWhiteButton({
         whiteSpace: "nowrap",
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '16px 24px',
+        padding: '12px 24px',
+        width: 'min-content',
         gap: '8px',
-        width: '171px',
-        height: '48px',
         background: isTransparent ? "transparent" : '#FEFEFE',
         border: '1px solid #8270FF',
         borderRadius: '4px',
         color: '#8270FF',
         fontFamily: 'Sora, sans-serif',
-        fontSize: '15.8px',
+        fontSize: '14px',
         fontWeight: 300,
         textTransform: 'none',
         '&:hover': {
-          background: '#6F60E0',
-          color: '#FFFFFF',
-          cursor: 'pointer',
+            background: isTransparent ? "rgba(130, 112, 255, 0.1)" : '#F9F9FF',
+            borderColor: '#6F60E0',
+            color: '#6F60E0',
+            boxShadow: '0 2px 8px rgba(130, 112, 255, 0.3)',
+            cursor: 'pointer',
         },
       }}
       {...rest}

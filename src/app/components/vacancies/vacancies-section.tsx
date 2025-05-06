@@ -3,6 +3,7 @@ import VacancieCard from "../cards/vacancie-card";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
+import {AnimatePresence, motion} from "framer-motion";
 
 const vacancies = [
   {
@@ -66,6 +67,8 @@ const vacancies = [
   },
 ];
 
+const MotionBox = motion(Box);
+
 export default function VacanciesSection() {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 3;
@@ -93,11 +96,9 @@ export default function VacanciesSection() {
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        minHeight: { xs: "auto", md: "75vh" },
-        px: { xs: "16px", md: "120px" },
-        py: { xs: "40px", md: "80px" },
-        gap: { xs: "40px", md: "40px" },
+        maxWidth: "90vw",
+        mx: "auto",
+        gap: { xs: "40px", md: "60px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -116,6 +117,7 @@ export default function VacanciesSection() {
             fontFamily: "Sora, sans-serif",
             color: "#000000",
             mb: "8px",
+            mt: { xs: "40px", md: "80px" },
           }}
         >
           Vagas Abertas
@@ -143,22 +145,37 @@ export default function VacanciesSection() {
           overflowX: { xs: "auto", md: "unset" },
           scrollSnapType: { xs: "x mandatory", md: "none" },
           gap: { xs: "16px", md: "24px" },
-          WebkitOverflowScrolling: "touch", 
-          "&::-webkit-scrollbar": { display: "none" }, 
+          WebkitOverflowScrolling: "touch",
+          "&::-webkit-scrollbar": { display: "none" },
         }}
       >
-        {paginatedVacancies.map((vacancie, index) => (
-          <Box
-            key={index}
-            sx={{
-              scrollSnapAlign: { xs: "center", md: "unset" },
-              flex: { xs: "0 0 100%", md: 1 },
-              maxWidth: { xs: "100%", md: "unset" },
-            }}
-          >
-            <VacancieCard vacancie={vacancie} />
-          </Box>
-        ))}
+          <AnimatePresence mode="wait">
+              <MotionBox
+                  key={currentPage}
+                  sx={{
+                      width: "100%",
+                      display: "flex",
+                      gap: { xs: "16px", md: "24px" },
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+              >
+                  {paginatedVacancies.map((vacancie, index) => (
+                      <Box
+                          key={index}
+                          sx={{
+                              flex: 1,
+                              display: "flex",
+                              height: "100%",
+                          }}
+                      >
+                          <VacancieCard vacancie={vacancie} />
+                      </Box>
+                  ))}
+              </MotionBox>
+          </AnimatePresence>
       </Box>
       {/* Paginação */}
       <Box
@@ -167,7 +184,6 @@ export default function VacanciesSection() {
           justifyContent: "center",
           alignItems: "center",
           gap: "16px",
-          mt: "24px",
         }}
       >
         <Box
