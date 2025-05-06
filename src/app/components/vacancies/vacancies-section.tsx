@@ -35,14 +35,14 @@ const vacancies = [
   {
     title: "Analista de QA",
     description:
-      "Garantia de qualidade em aplicações web e mobile. Lorem ipsum.",
+      "Garantia de qualidade em aplicações web e mobile.",
     location: "Híbrido - Rio de Janeiro",
     level: "Pleno",
   },
   {
     title: "Scrum Master",
     description:
-      "Facilitação de cerimônias ágeis e gestão de times. Lorem ipsum.",
+      "Facilitação de cerimônias ágeis e gestão de times.",
     location: "Presencial - Curitiba",
     level: "Sênior",
   },
@@ -55,7 +55,7 @@ const vacancies = [
   {
     title: "Product Owner",
     description:
-      "Gestão de backlog e priorização de funcionalidades. Lorem ipsum.",
+      "Gestão de backlog e priorização de funcionalidades.",
     location: "Híbrido - Belo Horizonte",
     level: "Sênior",
   },
