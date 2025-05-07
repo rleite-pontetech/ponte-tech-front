@@ -45,7 +45,7 @@ export default function HeaderMobile({
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           sx={{ borderRadius: 2, display: "flex", alignItems: "center", gap: 3 }}
         >
-          <ContainedPurpleButton maxWidth={100}>Login</ContainedPurpleButton>
+          <ContainedPurpleButton height={42}>Login</ContainedPurpleButton>
           {isMobileMenuOpen ? (
             <CloseIcon sx={{ color: "#8270FF", fontSize: 46, p: 1 }} />
           ) : (
@@ -53,7 +53,7 @@ export default function HeaderMobile({
               sx={{
                 bgcolor: "#8270FF",
                 color: "white",
-                fontSize: 46,
+                fontSize: 42,
                 p: 1,
                 borderRadius: 2,
               }}

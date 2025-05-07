@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import SmallInfoCard from "../cards/small-info";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import {scrollToElement} from "@/app/utils/scrollToElement";
 
 export default function OutsourcingSection() {
   return (
@@ -14,6 +15,7 @@ export default function OutsourcingSection() {
         maxWidth: "90vw",
         mx: "auto",
         gap: { xs: "40px", md: "60px" },
+        pt: { xs: "40px", md: "80px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -32,7 +34,6 @@ export default function OutsourcingSection() {
             fontFamily: "Sora, sans-serif",
             color: "#000000",
             mb: "8px",
-            mt: { xs: "40px", md: "80px" },
           }}
         >
           Outsourcing
@@ -122,7 +123,9 @@ export default function OutsourcingSection() {
                 mt: 3,
             }}
           >
-              <ContainedPurpleButton height={42}>Fale conosco <ArrowRightAltIcon sx={{bgcolor: "transparent"}}/></ContainedPurpleButton>
+              <ContainedPurpleButton height={42} onClick={() => scrollToElement("contact")}>
+                  Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
+              </ContainedPurpleButton>
           </Box>
         </Box>
 

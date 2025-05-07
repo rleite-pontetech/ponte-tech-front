@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import {scrollToElement} from "@/app/utils/scrollToElement";
 
 export default function AboutSection() {
   return (
@@ -12,13 +13,14 @@ export default function AboutSection() {
         maxWidth: "90vw",
         mx: "auto",
         gap: { xs: "40px", md: "60px" },
+        pt: { xs: "40px", md: "80px" },
       }}
     >
       <Box
         sx={{
           textAlign: "center",
           width: "100%",
-          pt: { xs: "40px", md: "80px" },
+
         }}
       >
         <Typography
@@ -134,7 +136,9 @@ export default function AboutSection() {
               display: { xs: "flex", md: "block" },
             }}
           >
-            <ContainedPurpleButton height={42}>Fale conosco <ArrowRightAltIcon sx={{bgcolor: "transparent"}}/></ContainedPurpleButton>
+              <ContainedPurpleButton height={42} onClick={() => scrollToElement("contact")}>
+                  Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
+              </ContainedPurpleButton>
           </Box>
         </Box>
       </Box>

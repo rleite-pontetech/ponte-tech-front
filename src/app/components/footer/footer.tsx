@@ -1,10 +1,9 @@
 import { Box, Typography, Link, Divider } from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import {scrollToElement} from "@/app/utils/scrollToElement";
 
 export default function Footer() {
     return (
@@ -62,15 +61,7 @@ export default function Footer() {
                         }}
                     >
                         <Link
-                            href="https://www.facebook.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{ background: "transparent" }}
-                        >
-                            <FacebookIcon sx={{ color: "#7F56D9", cursor: "pointer" }} />
-                        </Link>
-                        <Link
-                            href="https://www.instagram.com/"
+                            href="https://www.instagram.com/pontetechoficial"
                             target="_blank"
                             rel="noopener noreferrer"
                             sx={{ background: "transparent" }}
@@ -78,7 +69,7 @@ export default function Footer() {
                             <InstagramIcon sx={{ color: "#7F56D9", cursor: "pointer" }} />
                         </Link>
                         <Link
-                            href="https://www.linkedin.com/"
+                            href="https://www.linkedin.com/company/100767141"
                             target="_blank"
                             rel="noopener noreferrer"
                             sx={{ background: "transparent" }}
@@ -110,16 +101,16 @@ export default function Footer() {
                             gap: "8px",
                         }}
                     >
-                        <Link href="#" underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
+                        <Link onClick={() => scrollToElement("home")} underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
                             Home
                         </Link>
-                        <Link href="#" underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
-                            Nossos Serviços
-                        </Link>
-                        <Link href="#" underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
+                        <Link onClick={() => scrollToElement("about")} underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
                             Quem somos
                         </Link>
-                        <Link href="#" underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
+                        <Link onClick={() => scrollToElement("services")} underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
+                            Nossos Serviços
+                        </Link>
+                        <Link onClick={() => scrollToElement("vacancies")} underline="hover" color="#4F4F4F" sx={{ fontFamily: "Sora, sans-serif", fontSize: "14px" }}>
                             Vagas
                         </Link>
                     </Box>
@@ -176,19 +167,6 @@ export default function Footer() {
                             >
                                 (11) 91578-8441
                             </Link>
-                        </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                            <LocationOnIcon sx={{ color: "#7F56D9" }} />
-                            <Typography
-                                sx={{
-                                    fontSize: "14px",
-                                    fontWeight: 400,
-                                    fontFamily: "Sora, sans-serif",
-                                    color: "#4F4F4F",
-                                }}
-                            >
-                                São Paulo, SP
-                            </Typography>
                         </Box>
                     </Box>
                 </Box>

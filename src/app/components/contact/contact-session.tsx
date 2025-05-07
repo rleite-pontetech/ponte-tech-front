@@ -1,7 +1,6 @@
 import {Box, Typography, TextField} from "@mui/material";
 import EmailIcon from "@mui/icons-material/EmailOutlined";
 import PhoneIcon from "@mui/icons-material/PhoneOutlined";
-import LocationOnIcon from "@mui/icons-material/LocationOnOutlined";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 
@@ -162,39 +161,6 @@ export default function ContactSession() {
                                 >
                                     (11) 91578-8441
                                 </Box>
-                            </Typography>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "8px",
-                                background: "transparent",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    p: 0.2,
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    borderRadius: 2,
-                                    bgcolor: "rgba(255, 255, 255, 0.1)",
-                                }}
-                            >
-                                <LocationOnIcon sx={{background: "transparent", fontSize: '28px'}}/>
-                            </Box>
-
-                            <Typography
-                                sx={{
-                                    fontSize: "14px",
-                                    fontWeight: 400,
-                                    fontFamily: "Sora, sans-serif",
-                                    background: "transparent",
-                                }}
-                            >
-                                Endereço <br/>
-                                São Paulo, SP
                             </Typography>
                         </Box>
                     </Box>

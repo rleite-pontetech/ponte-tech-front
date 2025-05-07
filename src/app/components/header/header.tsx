@@ -5,21 +5,20 @@ import ContainedPurpleButton from "../buttons/contened-purple";
 import OutlinedWhiteButton from "../buttons/outlined-white";
 import { useEffect, useState } from "react";
 import HeaderMobile from "./header-mobile";
+import {scrollToElement} from "@/app/utils/scrollToElement";
 
 export default function Header() {
     const theme = useTheme();
     const [activeSection, setActiveSection] = useState("home");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const isMobile = useMediaQuery("(min-width:1050px)");
-
-    // Adicionando verificação de renderização no cliente
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        setIsClient(true);  // Marca que o componente foi montado no cliente
+        setIsClient(true);
 
         const handleScroll = () => {
-            const sections = ["home", "metodology", "about", "outsourcing", "hunting", "vacancies", "client-opinion"];
+            const sections = ["home", "about", "metodology", "services", "vacancies", "client-opinion", "contact"];
             let currentSection = "home";
 
             sections.forEach((section) => {
@@ -39,17 +38,14 @@ export default function Header() {
             window.addEventListener("scroll", handleScroll);
             return () => window.removeEventListener("scroll", handleScroll);
         }
-    }, [isClient]);  // A dependência de `isClient` garante que o código só roda no cliente
+    }, [isClient]);
 
     const scrollToSection = (sectionId: string) => {
-        const element = document.getElementById(sectionId);
         setActiveSection(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
+        scrollToElement(sectionId);
     };
 
-    if (!isClient) return null;  // Não renderiza nada no servidor até ser montado no cliente
+    if (!isClient) return null;
 
     return (
         <Box
@@ -79,7 +75,7 @@ export default function Header() {
                 <img
                     src="/svg/logo.svg"
                     alt="Logo"
-                    style={{ width: "100px" }}
+                    style={{ width: "96px" }}
                 />
                 <List
                     sx={{
@@ -105,8 +101,8 @@ export default function Header() {
                 >
                     {[
                         { label: "Home", id: "home" },
-                        { label: "Nossos Serviços", id: "services" },
                         { label: "Quem Somos", id: "about" },
+                        { label: "Nossos Serviços", id: "services" },
                         { label: "Vagas", id: "vacancies" },
                     ].map((item) => (
                         <ListItem
@@ -160,7 +156,15 @@ export default function Header() {
                         gap: "16px",
                     }}
                 >
-                    <OutlinedWhiteButton height={40}>Entre em contato</OutlinedWhiteButton>
+                    <OutlinedWhiteButton
+                        height={40}
+                        component="a"
+                        href="https://wa.me/5511915788441"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Entre em contato
+                    </OutlinedWhiteButton>
                     <ContainedPurpleButton height={40}>Área do colaborador</ContainedPurpleButton>
                 </Box>
             </Box>

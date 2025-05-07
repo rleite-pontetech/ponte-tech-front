@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import SmallInfoCard from "../cards/small-info";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import {scrollToElement} from "@/app/utils/scrollToElement";
 
 export default function HuntingSection() {
   return (
@@ -142,7 +143,9 @@ export default function HuntingSection() {
               mt: 3,
             }}
           >
-            <ContainedPurpleButton height={42}>Fale conosco <ArrowRightAltIcon sx={{bgcolor: "transparent"}}/></ContainedPurpleButton>
+              <ContainedPurpleButton height={42} onClick={() => scrollToElement("contact")}>
+                  Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
+              </ContainedPurpleButton>
           </Box>
         </Box>
       </Box>

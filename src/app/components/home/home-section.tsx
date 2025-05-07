@@ -2,6 +2,7 @@ import {Box, Typography} from "@mui/material";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import OutlinedWhiteButton from "../buttons/outlined-white";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import {scrollToElement} from "@/app/utils/scrollToElement";
 
 export default function HomeSection() {
     return (
@@ -9,7 +10,7 @@ export default function HomeSection() {
             sx={{
                     position: "relative",
                     width: "100vw",
-                    minHeight: {xs: "auto", md: "calc(100vh - 84px)"},
+                    minHeight: {xs: "auto", md: "100vh"},
                     background:
                         "linear-gradient(94.63deg, rgba(130, 112, 255, 0.08) 17.19%, rgba(65, 30, 254, 0.08) 58.6%, rgba(227, 99, 235, 0.08) 100%)",
                     overflow: "hidden",
@@ -17,7 +18,7 @@ export default function HomeSection() {
                     flexDirection: {xs: "column", md: "row"},
                     alignItems: "center",
                     justifyContent: "space-between",
-                    marginTop: {xs: "0", md: "84px"},
+                    paddingTop: {xs: "0", md: "84px"},
             }}
         >
             {/* Container centralizado com conteúdo */}
@@ -106,10 +107,12 @@ export default function HomeSection() {
                             mt: "24px",
                         }}
                     >
-                        <ContainedPurpleButton height={42}>
-                            Fale conosco <ArrowRightAltIcon sx={{bgcolor: "transparent"}}/>
+                        <ContainedPurpleButton height={42} onClick={() => scrollToElement("contact")}>
+                            Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
                         </ContainedPurpleButton>
-                        <OutlinedWhiteButton height={42} isTransparent>Ver vagas</OutlinedWhiteButton>
+                        <OutlinedWhiteButton height={42} isTransparent onClick={() => scrollToElement("vacancies")}>
+                            Ver vagas
+                        </OutlinedWhiteButton>
                     </Box>
                 </Box>
             </Box>

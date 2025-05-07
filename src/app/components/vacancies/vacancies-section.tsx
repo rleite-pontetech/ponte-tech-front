@@ -99,6 +99,7 @@ export default function VacanciesSection() {
         maxWidth: "90vw",
         mx: "auto",
         gap: { xs: "40px", md: "60px" },
+        pt: { xs: "40px", md: "80px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -117,7 +118,6 @@ export default function VacanciesSection() {
             fontFamily: "Sora, sans-serif",
             color: "#000000",
             mb: "8px",
-            mt: { xs: "40px", md: "80px" },
           }}
         >
           Vagas Abertas
