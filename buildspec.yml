@@ -9,6 +9,14 @@ phases:
   build:
     commands:
       - npm run build
+  post_build:
+    commands:
+      - |
+        if [ ! -z "$CLOUDFRONT_DISTRIBUTION_ID" ]; then
+          aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+        else
+          echo "CLOUDFRONT_DISTRIBUTION_ID não definido. Pulando invalidação."
+        fi
 
 artifacts:
   files:
