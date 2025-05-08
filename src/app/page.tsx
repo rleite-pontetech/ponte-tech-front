@@ -28,10 +28,8 @@ export default function Home() {
         <Box id="metodology">
           <MethodologySection />
         </Box>
-        <Box id="outsourcing">
+        <Box id="services">
           <OutsourcingSection />
-        </Box>
-        <Box id="hunting">
           <HuntingSection />
         </Box>
         <Box id="vacancies">

@@ -3,6 +3,7 @@ import VacancieCard from "../cards/vacancie-card";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
+import {AnimatePresence, motion} from "framer-motion";
 
 const vacancies = [
   {
@@ -34,14 +35,14 @@ const vacancies = [
   {
     title: "Analista de QA",
     description:
-      "Garantia de qualidade em aplicações web e mobile. Lorem ipsum.",
+      "Garantia de qualidade em aplicações web e mobile.",
     location: "Híbrido - Rio de Janeiro",
     level: "Pleno",
   },
   {
     title: "Scrum Master",
     description:
-      "Facilitação de cerimônias ágeis e gestão de times. Lorem ipsum.",
+      "Facilitação de cerimônias ágeis e gestão de times.",
     location: "Presencial - Curitiba",
     level: "Sênior",
   },
@@ -54,7 +55,7 @@ const vacancies = [
   {
     title: "Product Owner",
     description:
-      "Gestão de backlog e priorização de funcionalidades. Lorem ipsum.",
+      "Gestão de backlog e priorização de funcionalidades.",
     location: "Híbrido - Belo Horizonte",
     level: "Sênior",
   },
@@ -65,6 +66,8 @@ const vacancies = [
     level: "Pleno",
   },
 ];
+
+const MotionBox = motion(Box);
 
 export default function VacanciesSection() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -93,11 +96,10 @@ export default function VacanciesSection() {
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        minHeight: { xs: "auto", md: "75vh" },
-        px: { xs: "16px", md: "120px" },
-        py: { xs: "40px", md: "80px" },
-        gap: { xs: "40px", md: "40px" },
+        maxWidth: "90vw",
+        mx: "auto",
+        gap: { xs: "40px", md: "60px" },
+        pt: { xs: "40px", md: "80px" },
       }}
     >
       {/* Título e Subtítulo */}
@@ -143,22 +145,37 @@ export default function VacanciesSection() {
           overflowX: { xs: "auto", md: "unset" },
           scrollSnapType: { xs: "x mandatory", md: "none" },
           gap: { xs: "16px", md: "24px" },
-          WebkitOverflowScrolling: "touch", 
-          "&::-webkit-scrollbar": { display: "none" }, 
+          WebkitOverflowScrolling: "touch",
+          "&::-webkit-scrollbar": { display: "none" },
         }}
       >
-        {paginatedVacancies.map((vacancie, index) => (
-          <Box
-            key={index}
-            sx={{
-              scrollSnapAlign: { xs: "center", md: "unset" },
-              flex: { xs: "0 0 100%", md: 1 },
-              maxWidth: { xs: "100%", md: "unset" },
-            }}
-          >
-            <VacancieCard vacancie={vacancie} />
-          </Box>
-        ))}
+          <AnimatePresence mode="wait">
+              <MotionBox
+                  key={currentPage}
+                  sx={{
+                      width: "100%",
+                      display: "flex",
+                      gap: { xs: "16px", md: "24px" },
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+              >
+                  {paginatedVacancies.map((vacancie, index) => (
+                      <Box
+                          key={index}
+                          sx={{
+                              flex: 1,
+                              display: "flex",
+                              height: "100%",
+                          }}
+                      >
+                          <VacancieCard vacancie={vacancie} />
+                      </Box>
+                  ))}
+              </MotionBox>
+          </AnimatePresence>
       </Box>
       {/* Paginação */}
       <Box
@@ -167,7 +184,6 @@ export default function VacanciesSection() {
           justifyContent: "center",
           alignItems: "center",
           gap: "16px",
-          mt: "24px",
         }}
       >
         <Box

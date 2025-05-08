@@ -1,4 +1,4 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PersonIcon from "@mui/icons-material/Person";
 import ContainedPurpleButton from "../buttons/contened-purple";
@@ -10,21 +10,27 @@ interface Vacancie {
   level: string;
 }
 
-export default function VacancieCard({ vacancie }: { vacancie: Vacancie }) {
+export default function VacancieCard({ vacancie }: Readonly<{ vacancie: Vacancie }>) {
   const { title, description, location, level } = vacancie;
 
   return (
-    <Box
-      sx={{
-        border: "1px solid rgba(233, 233, 233, 1)",
-        borderRadius: "8px",
-        padding: "16px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        backgroundColor: "#FFFFFF",
-      }}
-    >
+      <Box
+          sx={{
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              border: "1px solid rgba(233, 233, 233, 1)",
+              borderRadius: "8px",
+              padding: "16px",
+              gap: "16px",
+              backgroundColor: "#FFFFFF",
+              width: "100%",
+              overflowX: { xs: "auto", md: "unset" },
+              scrollSnapType: { xs: "x mandatory", md: "none" },
+              WebkitOverflowScrolling: "touch",
+              "&::-webkit-scrollbar": { display: "none" },
+          }}
+      >
       {/* Título */}
       <Typography
         sx={{
@@ -38,16 +44,18 @@ export default function VacancieCard({ vacancie }: { vacancie: Vacancie }) {
       </Typography>
 
       {/* Descrição */}
-      <Typography
-        sx={{
-          fontSize: "14px",
-          fontWeight: 400,
-          fontFamily: "Sora, sans-serif",
-          color: "#4F4F4F",
-        }}
-      >
-        {description}
-      </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+              <Typography
+                  sx={{
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      fontFamily: "Sora, sans-serif",
+                      color: "#4F4F4F",
+                  }}
+              >
+                  {description}
+              </Typography>
+          </Box>
 
       {/* Informações adicionais */}
       <Box
@@ -55,6 +63,7 @@ export default function VacancieCard({ vacancie }: { vacancie: Vacancie }) {
           display: "flex",
           gap: "16px",
           alignItems: "center",
+          flexWrap: "wrap"
         }}
       >
         {/* Localização */}

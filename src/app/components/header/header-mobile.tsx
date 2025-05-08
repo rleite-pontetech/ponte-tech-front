@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Collapse } from "@mui/material";
+import {Box, List, ListItem, Collapse, Divider, useMediaQuery} from "@mui/material";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -15,11 +15,13 @@ export default function HeaderMobile({
   isMobileMenuOpen,
   activeSection,
   scrollToSection,
-}: HeaderMobileProps) {
+}: Readonly<HeaderMobileProps>) {
+  const isMobile = useMediaQuery("(max-width:1049px)");
+
   return (
     <Box
       sx={{
-        display: { xs: "flex", md: "none" },
+        display: isMobile ? "flex" : "none",
         flexDirection: "column",
         justifyContent: "space-between",
         width: "100%",
@@ -28,20 +30,22 @@ export default function HeaderMobile({
       <Box
         sx={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-between",
           width: "100%",
+          maxWidth: "90vw",
+          mx: "auto",
           pl: 0,
           gap: 2,
           alignItems: "center",
         }}
       >
-        <img width={80} src="./logo.svg" alt="Logo" />
-        <ContainedPurpleButton>Login</ContainedPurpleButton>
+        <img width={94} src="/svg/logo.svg" alt="Logo" />
 
         <Box
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          sx={{ borderRadius: 2, display: "flex", alignItems: "center" }}
+          sx={{ borderRadius: 2, display: "flex", alignItems: "center", gap: 3 }}
         >
+          <ContainedPurpleButton height={42}>Login</ContainedPurpleButton>
           {isMobileMenuOpen ? (
             <CloseIcon sx={{ color: "#8270FF", fontSize: 46, p: 1 }} />
           ) : (
@@ -49,7 +53,7 @@ export default function HeaderMobile({
               sx={{
                 bgcolor: "#8270FF",
                 color: "white",
-                fontSize: 46,
+                fontSize: 42,
                 p: 1,
                 borderRadius: 2,
               }}
@@ -59,16 +63,20 @@ export default function HeaderMobile({
       </Box>
       {/* Expandable Menu */}
       <Collapse in={isMobileMenuOpen} sx={{ width: "100%" }}>
+        <Divider sx={{ marginTop: "20px" }}/>
         <List
           sx={{
             display: "flex",
             flexDirection: "column",
             gap: "16px",
             color: "#8270FF",
-            fontSize: "20px",
             fontWeight: 500,
             fontFamily: "Sora, sans-serif",
-            mt: 2,
+            width: "100%",
+            maxWidth: "90vw",
+            mx: "auto",
+            pt: "24px",
+            pb: "4px"
           }}
         >
           {[
@@ -77,21 +85,38 @@ export default function HeaderMobile({
             { label: "Quem Somos", id: "about" },
             { label: "Vagas", id: "vacancies" },
           ].map((item) => (
-            <ListItem
-              key={item.id}
-              sx={{
-                padding: 0,
-                color: activeSection === item.id ? "#6F60E0" : "#4B4B4B",
-                "&:hover": {
-                  color: "#6F60E0",
-                  textDecoration: "underline",
-                  cursor: "pointer",
-                },
-              }}
-              onClick={() => scrollToSection(item.id)}
-            >
-              {item.label}
-            </ListItem>
+              <ListItem
+                  key={item.id}
+                  sx={{
+                      padding: 0,
+                      color: activeSection === item.id ? "#6F60E0" : "#4B4B4B",
+                      fontWeight: activeSection === item.id ? 500 : 400,
+                      "&:hover": {
+                          color: "#6F60E0",
+                          cursor: "pointer",
+                      },
+                  }}
+                  onClick={() => scrollToSection(item.id)}
+              >
+                  <Box
+                      sx={{
+                          display: 'inline-block',
+                          position: 'relative',
+                          "&::after": {
+                              content: activeSection === item.id ? '""' : 'none',
+                              position: 'absolute',
+                              bottom: -4,
+                              left: 0,
+                              width: '100%',
+                              height: '1.6px',
+                              backgroundColor: '#6F60E0',
+                              borderRadius: '2px',
+                          },
+                      }}
+                  >
+                      {item.label}
+                  </Box>
+              </ListItem>
           ))}
         </List>
       </Collapse>
