@@ -1,9 +1,8 @@
 'use client';
-
-import { Box, BoxProps } from '@mui/material';
+import {  Button, ButtonProps} from '@mui/material';
 import { ReactNode } from 'react';
 
-interface ContainedPurpleButtonProps extends BoxProps {
+interface ContainedPurpleButtonProps extends ButtonProps {
   children: ReactNode;
   width?: string | number;
 }
@@ -14,7 +13,8 @@ export default function ContainedPurpleButton({
   ...rest
 }: Readonly<ContainedPurpleButtonProps>) {
   return (
-    <Box
+    <Button
+
       sx={{
         display: 'flex',
         flexDirection: 'row',
@@ -42,6 +42,6 @@ export default function ContainedPurpleButton({
       {...rest}
     >
       {children}
-    </Box>
+    </Button>
   );
 }
