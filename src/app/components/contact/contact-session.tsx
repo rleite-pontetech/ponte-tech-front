@@ -9,7 +9,7 @@ import { formatPhone, unmaskPhone } from "@/app/utils/format-utils";
 import axios from "axios";
 import { BackendPaths } from "@/app/utils/backend-paths";
 import { useState } from "react";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 import ContainedPurpleButton from "../buttons/contened-purple";
 
 export default function ContactSession() {
@@ -18,7 +18,7 @@ export default function ContactSession() {
   const {
     register,
     handleSubmit,
-    formState: { errors , isSubmitting},
+    formState: { errors, isSubmitting },
     control,
     reset,
   } = useForm<ContactForm>({
@@ -26,20 +26,21 @@ export default function ContactSession() {
   });
 
   const onSubmit = async (data: ContactForm) => {
-   try{
-    const response = await axios.post(BackendPaths.sendMessage,data)
-   if (response.status === 200) {
-      setResponseMsg("Mensagem enviada com sucesso!");
-      setOpen(true);
-      reset();
-      return;
+    try {
+      const response = await axios.post(BackendPaths.sendMessage, data);
+      if (response.status === 200) {
+        setResponseMsg("Mensagem enviada com sucesso!");
+        setOpen(true);
+        reset();
+        return;
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setResponseMsg("Erro ao enviar mensagem. Tente novamente mais tarde.");
+        setOpen(true);
+        return;
+      }
     }
-   }catch (error) {
-    if (axios.isAxiosError(error)) {
-     setResponseMsg("Erro ao enviar mensagem. Tente novamente mais tarde.");
-     setOpen(true);
-      return;
-    }}
   };
   return (
     <Box sx={{ backgroundColor: "#7F56D9" }}>
@@ -305,7 +306,11 @@ export default function ContactSession() {
               error={!!errors.mensagem}
               helperText={errors.mensagem?.message as string}
             />
-            <ContainedPurpleButton width="100%" type="submit" disabled={isSubmitting}> 
+            <ContainedPurpleButton
+              width="100%"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Enviar mensagem{" "}
               <SendOutlinedIcon
                 sx={{
@@ -318,32 +323,33 @@ export default function ContactSession() {
           </Box>
         </Box>
       </Box>
-            <Modal
+      <Modal
         aria-labelledby="spring-modal-title"
         aria-describedby="spring-modal-description"
         open={open}
-        onClose={()=> setOpen(false)}
+        onClose={() => setOpen(false)}
         closeAfterTransition
       >
-          <Box sx={{
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-}}>
-            <Typography id="spring-modal-title" variant="h6" component="h2">
-              Envio de Mensagem
-            </Typography>
-            <Typography id="spring-modal-description" sx={{ mt: 2 }}>
-             {responseMsg}
-            </Typography>
-          </Box>
-  
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Typography id="spring-modal-title" variant="h6" component="h2">
+            Envio de Mensagem
+          </Typography>
+          <Typography id="spring-modal-description" sx={{ mt: 2 }}>
+            {responseMsg}
+          </Typography>
+        </Box>
       </Modal>
     </Box>
   );

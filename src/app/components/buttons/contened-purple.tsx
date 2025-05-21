@@ -5,11 +5,13 @@ import { ReactNode } from 'react';
 interface ContainedPurpleButtonProps extends ButtonProps {
   children: ReactNode;
   width?: string | number;
+  height?: string | number;
 }
 
 export default function ContainedPurpleButton({
   children,
   width = 'min-content',
+  height = 'min-content',
   ...rest
 }: Readonly<ContainedPurpleButtonProps>) {
   return (
@@ -32,6 +34,7 @@ export default function ContainedPurpleButton({
         fontSize: '14px',
         fontWeight: 300,
         textTransform: 'none',
+        height: height,
         '&:hover': {
           background: '#6F60E0',
           borderColor: '#6F60E0',
