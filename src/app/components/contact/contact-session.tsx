@@ -11,21 +11,36 @@ import { BackendPaths } from "@/app/utils/backend-paths";
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
 import ContainedPurpleButton from "../buttons/contened-purple";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useRef } from "react";
 
 export default function ContactSession() {
+  const SITE_KEY = "6LdKKEsrAAAAAGVqxBMdzEi1IpjZcU1cnHKWVm3z";
   const [responseMsg, setResponseMsg] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     control,
     reset,
+    setError,
+    clearErrors,
   } = useForm<ContactForm>({
     resolver: joiResolver(formSchema),
   });
 
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
   const onSubmit = async (data: ContactForm) => {
+    if (!captchaToken) {
+      setError("captcha", { message: "Por favor, verifique o reCAPTCHA." });
+      return;
+    }
+
     try {
       const response = await axios.post(BackendPaths.sendMessage, data);
       if (response.status === 200) {
@@ -38,6 +53,9 @@ export default function ContactSession() {
       if (axios.isAxiosError(error)) {
         setResponseMsg("Erro ao enviar mensagem. Tente novamente mais tarde.");
         setOpen(true);
+        recaptchaRef.current?.reset();
+        setCaptchaToken(null);
+        clearErrors("captcha");
         return;
       }
     }
@@ -306,6 +324,28 @@ export default function ContactSession() {
               error={!!errors.mensagem}
               helperText={errors.mensagem?.message as string}
             />
+            {/* ReCAPTCHA */}
+            <Box sx={{ alignSelf: "center" }}>
+              <ReCAPTCHA
+                sitekey={SITE_KEY}
+                ref={recaptchaRef}
+                onChange={(token) => {
+                  setCaptchaToken(token);
+                  clearErrors("captcha");
+                }}
+                onExpired={() => {
+                  setCaptchaToken(null);
+                  setError("captcha", {
+                    message: "O reCAPTCHA expirou. Tente novamente.",
+                  });
+                }}
+              />
+              {errors.captcha && (
+                <Typography color="error" fontSize="0.875rem" mt={1}>
+                  {errors.captcha.message}
+                </Typography>
+              )}
+            </Box>
             <ContainedPurpleButton
               width="100%"
               type="submit"
