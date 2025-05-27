@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import {scrollToElement} from "@/app/utils/scrollToElement";
+import { scrollToElement } from "@/app/utils/scrollToElement";
+import { Carousel } from "../carousel/carousel";
 
 export default function AboutSection() {
   return (
@@ -20,7 +21,6 @@ export default function AboutSection() {
         sx={{
           textAlign: "center",
           width: "100%",
-
         }}
       >
         <Typography
@@ -136,12 +136,43 @@ export default function AboutSection() {
               display: { xs: "flex", md: "block" },
             }}
           >
-              <ContainedPurpleButton height={42} onClick={() => scrollToElement("contact")}>
-                  Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
-              </ContainedPurpleButton>
+            <ContainedPurpleButton
+              height={42}
+              onClick={() => scrollToElement("contact")}
+            >
+              Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
+            </ContainedPurpleButton>
           </Box>
         </Box>
       </Box>
+      <Carousel
+        items={[
+          {
+            title: "Nosso Propósito",
+            description: "Saiba como criamos impacto com tecnologia.",
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            kind: "youtube-embed",
+          },
+          {
+            title: "Nossa cultura",
+            description: "Conheça o ambiente de trabalho",
+            url: "https://www.youtube.com/watch?v=BBGEG21CGo0",
+            kind: "youtube-embed",
+          },
+          {
+            title: "Nossos Projetos",
+            description: "Veja como transformamos ideias em soluções.",
+            url: "https://www.youtube.com/watch?v=x7R7H4-_TSc",
+            kind: "youtube-embed",
+          },
+          {
+            title: "Conectando Pessoas à Tecnologia",
+            description: "Transformando talentos em soluções.",
+            url: "https://www.youtube.com/watch?v=TRPBY_lxJfE",
+            kind: "youtube-embed",
+          },
+        ]}
+      />
     </Box>
   );
 }
