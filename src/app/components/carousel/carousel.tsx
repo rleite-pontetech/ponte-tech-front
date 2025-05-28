@@ -49,7 +49,7 @@ export const Carousel = ({ items }: CarouselProps) => {
         sx={{
           textAlign: "center",
           width: "100%",
-          mb:2
+          mb: 2,
         }}
       >
         <Typography
@@ -112,7 +112,11 @@ export const Carousel = ({ items }: CarouselProps) => {
               },
             }}
           >
-            <Card>
+            <Card
+              sx={{
+                borderRadius: "16px",
+              }}
+            >
               {item.kind === "video" && (
                 <video src={item.url} controls style={{ width: "100%" }} />
               )}
