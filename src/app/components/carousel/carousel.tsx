@@ -49,6 +49,7 @@ export const Carousel = ({ items }: CarouselProps) => {
         sx={{
           textAlign: "center",
           width: "100%",
+          mb:2
         }}
       >
         <Typography
