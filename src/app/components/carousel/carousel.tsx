@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Card, CardContent } from "@mui/material";
 import { useRef } from "react";
 import { NextArrow, PrevArrow } from "./arrow-button";
 interface VideoItem {
@@ -112,9 +111,13 @@ export const Carousel = ({ items }: CarouselProps) => {
               },
             }}
           >
-            <Card
+            <Box
+    
               sx={{
                 borderRadius: "16px",
+                overflow: "hidden",
+                boxShadow: "0px 4px 24px rgba(0, 0, 0, 0.1)",
+                maxHeight: "210px",
               }}
             >
               {item.kind === "video" && (
@@ -130,42 +133,15 @@ export const Carousel = ({ items }: CarouselProps) => {
               {item.kind === "youtube-embed" && (
                 <iframe
                   width="100%"
-                  height="200"
+                  height="210"
+                  frameBorder="0"
                   src={item.url.replace("watch?v=", "embed/")}
                   title={item.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
               )}
-              <CardContent>
-                <Typography
-                  variant="h6"
-                  color="black"
-                  sx={{
-                    fontSize: { xs: "16px", md: "20px" },
-                    lineHeight: { xs: "20px", md: "28px" },
-                    fontWeight: 600,
-                    fontFamily: "Sora, sans-serif",
-                    color: "#000",
-                  }}
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="black"
-                  sx={{
-                    fontSize: { xs: "12px", md: "14px" },
-                    lineHeight: { xs: "16px", md: "24px" },
-                    fontWeight: 300,
-                    fontFamily: "Sora, sans-serif",
-                    color: "#292929",
-                  }}
-                >
-                  {item.description}
-                </Typography>
-              </CardContent>
-            </Card>
+            </Box>
           </Box>
         ))}
       </Slider>
