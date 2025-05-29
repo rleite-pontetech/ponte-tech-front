@@ -1,7 +1,31 @@
 import { Box, Typography } from "@mui/material";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import {scrollToElement} from "@/app/utils/scrollToElement";
+import { scrollToElement } from "@/app/utils/scrollToElement";
+import { Carousel } from "../carousel/carousel";
+
+const videos = [
+  {
+    title: "Quem é a Ponte Tech?",
+    url: "https://www.youtube.com/watch?v=uMqCju5YU6k",
+    kind: "youtube-embed",
+  },
+  {
+    title: "Como formamos times de alta performance",
+    url: "https://www.youtube.com/watch?v=8EDaUqQ6QNU",
+    kind: "youtube-embed",
+  },
+  {
+    title: "Quando faz sentido contratar um time alocado?",
+    url: "https://www.youtube.com/watch?v=jUi76PWlzgY",
+    kind: "youtube-embed",
+  },
+  {
+    title: "Acelere com o modelo Body Shop",
+    url: "https://www.youtube.com/watch?v=WYasH6zkDgs",
+    kind: "youtube-embed",
+  },
+];
 
 export default function AboutSection() {
   return (
@@ -20,7 +44,6 @@ export default function AboutSection() {
         sx={{
           textAlign: "center",
           width: "100%",
-
         }}
       >
         <Typography
@@ -136,12 +159,16 @@ export default function AboutSection() {
               display: { xs: "flex", md: "block" },
             }}
           >
-              <ContainedPurpleButton height={42} onClick={() => scrollToElement("contact")}>
-                  Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
-              </ContainedPurpleButton>
+            <ContainedPurpleButton
+              height={42}
+              onClick={() => scrollToElement("contact")}
+            >
+              Fale conosco <ArrowRightAltIcon sx={{ bgcolor: "transparent" }} />
+            </ContainedPurpleButton>
           </Box>
         </Box>
       </Box>
+      <Carousel items={videos} />
     </Box>
   );
 }
