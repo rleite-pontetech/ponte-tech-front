@@ -5,6 +5,7 @@ export type ContactForm = {
   telefone: string;
   empresa: string;
   mensagem: string;
+  captcha: string;
 }
 export const formSchema:Joi.ObjectSchema<ContactForm> = Joi.object({
   nomeCompleto: Joi.string()
@@ -39,5 +40,8 @@ export const formSchema:Joi.ObjectSchema<ContactForm> = Joi.object({
 
   mensagem: Joi.string().allow("").messages({
     "string.base": "Mensagem deve ser um texto",
+  }),
+  captcha: Joi.string().required().messages({
+    "string.empty": "Captcha é obrigatório",
   }),
 });
