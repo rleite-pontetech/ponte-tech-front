@@ -4,32 +4,28 @@ import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { scrollToElement } from "@/app/utils/scrollToElement";
 import { Carousel } from "../carousel/carousel";
 
-const videos =[
-          {
-            title: "Quem é a Ponte Tech?",
-            description: "Conheça nossa história, propósito e como ajudamos empresas a escalar tecnologia com agilidade e talento.",
-            url: "https://www.youtube.com/watch?v=uMqCju5YU6k",
-            kind: "youtube-embed",
-          },
-          {
-            title: "Como formamos times de alta performance",
-            description: "Entenda a metodologia H2T: hunting ativo, testes técnicos e análise de fit cultural — para contratar com precisão.",
-            url: "https://www.youtube.com/watch?v=8EDaUqQ6QNU",
-            kind: "youtube-embed",
-          },
-          {
-            title: "Quando faz sentido contratar um time alocado?",
-            description: "Descubra os benefícios de escalar squads prontos com a Ponte Tech, sem burocracia ou riscos trabalhistas.",
-            url: "https://www.youtube.com/watch?v=jUi76PWlzgY",
-            kind: "youtube-embed",
-          },
-          {
-            title: "Acelere com o modelo Body Shop",
-            description: "Veja como alocar profissionais sob demanda pode destravar seu projeto com agilidade e performance.",
-            url: "https://www.youtube.com/watch?v=WYasH6zkDgs",
-            kind: "youtube-embed",
-          },
-        ]
+const videos = [
+  {
+    title: "Quem é a Ponte Tech?",
+    url: "https://www.youtube.com/watch?v=uMqCju5YU6k",
+    kind: "youtube-embed",
+  },
+  {
+    title: "Como formamos times de alta performance",
+    url: "https://www.youtube.com/watch?v=8EDaUqQ6QNU",
+    kind: "youtube-embed",
+  },
+  {
+    title: "Quando faz sentido contratar um time alocado?",
+    url: "https://www.youtube.com/watch?v=jUi76PWlzgY",
+    kind: "youtube-embed",
+  },
+  {
+    title: "Acelere com o modelo Body Shop",
+    url: "https://www.youtube.com/watch?v=WYasH6zkDgs",
+    kind: "youtube-embed",
+  },
+];
 
 export default function AboutSection() {
   return (
@@ -172,9 +168,7 @@ export default function AboutSection() {
           </Box>
         </Box>
       </Box>
-      <Carousel
-        items={videos}
-      />
+      <Carousel items={videos} />
     </Box>
   );
 }

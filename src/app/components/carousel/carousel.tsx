@@ -6,7 +6,6 @@ import { useRef } from "react";
 import { NextArrow, PrevArrow } from "./arrow-button";
 interface VideoItem {
   title: string;
-  description: string;
   url: string;
   kind: string;
 }
