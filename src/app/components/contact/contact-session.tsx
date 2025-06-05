@@ -8,7 +8,7 @@ import { ContactForm, formSchema } from "./form-validation";
 import { formatPhone, unmaskPhone } from "@/app/utils/format-utils";
 import axios from "axios";
 import { BackendPaths } from "@/app/utils/backend-paths";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 import ContainedPurpleButton from "../buttons/contened-purple";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -28,18 +28,15 @@ export default function ContactSession() {
     control,
     reset,
     setError,
-    clearErrors,
+    clearErrors,setValue
   } = useForm<ContactForm>({
     resolver: joiResolver(formSchema),
   });
 
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
 
   const onSubmit = async (data: ContactForm) => {
-    if (!captchaToken) {
-      setError("captcha", { message: "Por favor, verifique o reCAPTCHA." });
-      return;
-    }
+   
 
     try {
       const response = await axios.post(BackendPaths.sendMessage, data);
@@ -54,12 +51,17 @@ export default function ContactSession() {
         setResponseMsg("Erro ao enviar mensagem. Tente novamente mais tarde.");
         setOpen(true);
         recaptchaRef.current?.reset();
-        setCaptchaToken(null);
         clearErrors("captcha");
         return;
       }
     }
   };
+
+  useEffect(()=>{
+    register("captcha", {
+      required: "Captcha é obrigatório",})
+  },[register]);
+
   return (
     <Box sx={{ backgroundColor: "#7F56D9" }}>
       <Box
@@ -330,11 +332,11 @@ export default function ContactSession() {
                 sitekey={SITE_KEY}
                 ref={recaptchaRef}
                 onChange={(token) => {
-                  setCaptchaToken(token);
+                 setValue("captcha", token || "");
                   clearErrors("captcha");
                 }}
                 onExpired={() => {
-                  setCaptchaToken(null);
+                  setValue("captcha","");
                   setError("captcha", {
                     message: "O reCAPTCHA expirou. Tente novamente.",
                   });
