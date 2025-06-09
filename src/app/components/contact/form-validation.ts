@@ -43,5 +43,7 @@ export const formSchema:Joi.ObjectSchema<ContactForm> = Joi.object({
   }),
   captcha: Joi.string().required().messages({
     "string.empty": "Captcha é obrigatório",
+    "any.required": "Captcha é obrigatório",
+    "string.base": "Captcha é obrigatório",
   }),
 });
